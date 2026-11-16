@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDa Consulting | Scouting, Recrutement Sportif & SDa Design</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Configuration Tailwind avec la charte officielle SDa Consulting -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: '#0A1A3A',     /* Bleu marine officiel SDa Consulting */
+                        brandNavyDark: '#050D20', /* Fond très sombre */
+                        brandRed: '#E63946',      /* Rouge accentuation officiel */
+                        brandRedHover: '#C82333',
+                        brandBlueLight: '#1D4ED8',
+                        cardBg: '#111D35',
+                        textMuted: '#94A3B8'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Teko', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glow-red {
+            box-shadow: 0 0 25px rgba(230, 57, 70, 0.25);
+        }
+        .glow-navy {
+            box-shadow: 0 0 25px rgba(29, 78, 216, 0.25);
+        }
+        .text-gradient-red {
+            background: linear-gradient(135deg, #FF6B6B 0%, #E63946 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+        .modal-active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+    </style>
+</head>
+<body class="bg-brandNavyDark text-white font-sans antialiased selection:bg-brandRed selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation sticky -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brandNavyDark/90 border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo SDa Consulting Officiel -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="SDa Consulting Logo.png" alt="SDa Consulting Logo" class="h-12 w-auto object-contain bg-white/95 p-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform" onerror="this.onerror=null; this.src='https://placehold.co/180x60/0A1A3A/ffffff?text=SDa+Consulting'">
+                </a>
+
+                <!-- Nav Desktop -->
+                <nav class="hidden lg:flex items-center gap-7">
+                    <a href="#home" class="text-xs uppercase tracking-widest font-semibold text-gray-300 hover:text-white transition-colors">
+                        Accueil
+                    </a>
+                    <a href="#services" class="text-xs uppercase tracking-widest font-semibold text-gray-300 hover:text-brandRed transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-volleyball text-brandRed"></i> Scouting & Consulting
+                    </a>
+                    <a href="#partners" class="text-xs uppercase tracking-widest font-semibold text-gray-300 hover:text-white transition-colors">
+                        Partenaires
+                    </a>
+                    
+                    <!-- Onglet Dédicacé SDa Design -->
+                    <a href="#design" class="text-xs uppercase tracking-widest font-bold px-4 py-2 rounded-full bg-gradient-to-r from-red-500/20 to-brandRed/20 text-brandRed border border-brandRed/40 hover:bg-brandRed hover:text-white transition-all flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-paintbrush"></i> SDa Design <span class="bg-brandRed text-white text-[9px] px-1.5 py-0.5 rounded-full uppercase">Sport</span>
+                    </a>
+
+                    <a href="#contact" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brandRed hover:bg-brandRedHover text-white transition-colors glow-red">
+                        Contact / Devis
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="lg:hidden text-2xl text-gray-300 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Nav -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-cardBg border-b border-white/10 px-6 py-6 space-y-4">
+            <a href="#home" class="mobile-link block text-sm font-medium text-gray-300 hover:text-white">Accueil</a>
+            <a href="#services" class="mobile-link block text-sm font-medium text-gray-300 hover:text-brandRed">
+                <i class="fa-solid fa-volleyball mr-2 text-brandRed"></i> Scouting & Services
+            </a>
+            <a href="#partners" class="mobile-link block text-sm font-medium text-gray-300 hover:text-white">Nos Partenaires</a>
+            <a href="#design" class="mobile-link block text-sm font-bold text-brandRed bg-brandRed/10 p-2.5 rounded-xl border border-brandRed/30">
+                <i class="fa-solid fa-paintbrush mr-2"></i> SDa Design (Graphisme Sport)
+            </a>
+            <a href="#contact" class="mobile-link inline-block w-full text-center py-3 rounded-xl text-sm font-bold uppercase bg-brandRed text-white">
+                Contact & Devis
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section SDa Consulting -->
+    <section id="home" class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 bg-grid-pattern">
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-brandRed/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-brandBlueLight/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Texte d'accroche principal -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-textMuted">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brandRed animate-pulse"></span>
+                        Volley-ball & Management de Carrière Sportive
+                    </div>
+                    
+                    <h1 class="font-display text-5xl sm:text-7xl font-extrabold uppercase tracking-tight leading-none">
+                        STRATEGY <span class="text-brandRed">/</span> SUPPORT <span class="text-brandRed">/</span> GROWTH
+                    </h1>
+
+                    <p class="text-lg text-gray-300 font-light leading-relaxed">
+                        <strong class="text-white font-semibold">SDa Consulting</strong> accompagne les athlètes et les clubs dans leur développement. Experte en scouting et recrutement, nous créons des opportunités concrètes d'avenir universitaire aux États-Unis et de carrière professionnelle à l'international.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-brandRed hover:bg-brandRedHover text-white transition-all shadow-lg glow-red text-center">
+                            Découvrir mes services Scouting
+                        </a>
+                        <a href="#design" class="w-full sm:w-auto px-6 py-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-cardBg hover:bg-white/10 text-white border border-white/10 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paintbrush text-brandRed"></i> Voir SDa Design
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte visuelle avec Logo Officiel SDa Consulting -->
+                <div class="lg:col-span-5">
+                    <div class="bg-cardBg p-8 rounded-3xl border border-white/10 shadow-2xl relative group hover:border-brandRed/40 transition-all">
+                        <div class="bg-white p-6 rounded-2xl flex items-center justify-center mb-6">
+                            <img src="SDa Consulting Logo.png" alt="SDa Consulting Logo" class="max-h-36 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/300x120/0A1A3A/ffffff?text=SDa+Consulting'">
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 text-xs uppercase font-bold text-brandRed tracking-widest">
+                                <i class="fa-solid fa-check-circle"></i> Partenaire Sportlinx360 & AlfaGlobe
+                            </div>
+                            <h3 class="font-display text-2xl font-bold uppercase">Scouting & Recrutement Sportif</h3>
+                            <p class="text-xs text-textMuted leading-relaxed">
+                                Détection de talents, constitution de dossiers académiques/sportifs et mise en relation directe avec les coachs universitaires américains (NCAA) et les agences professionnelles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Cœur de Métier - SDa Consulting Services -->
+    <section id="services" class="py-20 bg-cardBg/50 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div>
+                    <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2">Expertise & Accompagnement</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-extrabold uppercase">Services <span class="text-gradient-red">SDa Consulting</span></h2>
+                </div>
+                <p class="text-textMuted max-w-md text-sm">
+                    Une approche structurée pour transformer le potentiel sportif en carrière académique et professionnelle réussie.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1: Strategy -->
+                <div class="p-8 rounded-2xl bg-cardBg border border-white/10 hover:border-brandRed/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brandRed/10 text-brandRed flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-chess-knight"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-brandRed uppercase tracking-widest block mb-1">Pilier 1 — Strategy</span>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-3">Scouting & Évaluation</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">
+                            Analyse complète du profil athlétique et technique du joueur/joueuse. Réalisation de bilans statistiques et vidéo pour cibler le niveau opportun (NCAA I/II, NAIA, JUCO ou Ligues Pro).
+                        </p>
+                    </div>
+                    <ul class="text-xs space-y-2 text-gray-300 border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brandRed"></i> Évaluation vidéo personnalisée</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brandRed"></i> Positionnement stratégique</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Support -->
+                <div class="p-8 rounded-2xl bg-cardBg border border-white/10 hover:border-brandRed/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brandRed/10 text-brandRed flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-brandRed uppercase tracking-widest block mb-1">Pilier 2 — Support</span>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-3">Placement Universitaire & Pro</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">
+                            Accompagnement administratif, académique et relationnel pour l'obtention de bourses d'études sportives aux USA via Sportlinx360, ou contrats professionnels via AlfaGlobe.
+                        </p>
+                    </div>
+                    <ul class="text-xs space-y-2 text-gray-300 border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brandRed"></i> Contact direct avec les coachs US</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brandRed"></i> Suivi des démarches de visa & éligibilité</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Growth -->
+                <div class="p-8 rounded-2xl bg-cardBg border border-white/10 hover:border-brandRed/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brandRed/10 text-brandRed flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-arrow-up-right-dots"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-brandRed uppercase tracking-widest block mb-1">Pilier 3 — Growth</span>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-3">Suivi & Développement</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">
+                            Accompagnement continu tout au long du parcours sportif. Conseil en gestion de carrière, développement personnel et mise en valeur de votre image.
+                        </p>
+                    </div>
+                    <ul class="text-xs space-y-2 text-gray-300 border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brandRed"></i> Mentoring individuel</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brandRed"></i> Synergie avec SDa Design pour l'image</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Partenaires Officiels -->
+    <section id="partners" class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-brandRed block mb-2">Réseau International</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-extrabold uppercase">Partenaires Officiels de Confiance</h2>
+                <p class="text-textMuted text-sm mt-2">Nous collaborons avec les meilleures structures pour garantir votre réussite.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Partenaire 1: Sportlinx360 -->
+                <div class="bg-cardBg p-8 rounded-3xl border border-white/10 flex flex-col items-center text-center hover:border-brandRed/40 transition-all">
+                    <div class="bg-white p-4 rounded-2xl mb-6 w-full max-w-xs flex items-center justify-center h-28">
+                        <img src="SportLinx360 - Logo.png" alt="SportLinx360 Logo" class="max-h-20 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/250x80/ffffff/0A1A3A?text=SportLinx360'">
+                    </div>
+                    <h3 class="font-display text-2xl font-bold uppercase text-white mb-2">SportLinx360</h3>
+                    <span class="text-xs font-bold text-brandRed uppercase tracking-wider mb-4">US Volleyball & Bourses Universitaires</span>
+                    <p class="text-textMuted text-xs leading-relaxed">
+                        Agence de référence spécialisée dans le placement d'athlètes de volley-ball dans les universités américaines (NCAA, NAIA, NJCAA) avec des bourses d'études sportives.
+                    </p>
+                </div>
+
+                <!-- Partenaire 2: AlfaGlobe -->
+                <div class="bg-cardBg p-8 rounded-3xl border border-white/10 flex flex-col items-center text-center hover:border-brandRed/40 transition-all">
+                    <div class="bg-white p-4 rounded-2xl mb-6 w-full max-w-xs flex items-center justify-center h-28">
+                        <img src="Alfa Globe - Logo .jpeg" alt="AlfaGlobe Logo" class="max-h-20 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/250x80/ffffff/0A1A3A?text=AlfaGlobe'">
+                    </div>
+                    <h3 class="font-display text-2xl font-bold uppercase text-white mb-2">AlfaGlobe</h3>
+                    <span class="text-xs font-bold text-brandRed uppercase tracking-wider mb-4">Management & Carrière Professionnelle</span>
+                    <p class="text-textMuted text-xs leading-relaxed">
+                        Agence internationale de management de sportifs de haut niveau dédiée aux opportunités de contrats professionnels dans les ligues mondiales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Onglet & Section Dédiée — SDa Design -->
+    <section id="design" class="py-20 bg-gradient-to-b from-brandNavyDark via-cardBg/80 to-brandNavyDark border-t-2 border-brandRed/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Banner En-tête SDa Design avec Logo Officiel -->
+            <div class="bg-cardBg border border-brandRed/30 p-8 sm:p-10 rounded-3xl mb-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brandRed/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="space-y-4 text-center md:text-left max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandRed/20 text-brandRed text-xs font-bold uppercase tracking-widest border border-brandRed/30">
+                        <i class="fa-solid fa-paintbrush"></i> Onglet Spécialisé Graphisme
+                    </div>
+                    <h2 class="font-display text-4xl sm:text-5xl font-extrabold uppercase leading-none">
+                        SDa <span class="text-brandRed">Design</span>
+                    </h2>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        En complément du consulting, nous proposons un service de création graphique <strong>exclusivement dédié au milieu sportif</strong>. Graphismes de match, annonces de recrutement, visuels de transferts et identité de marque pour athlètes et clubs.
+                    </p>
+                    <div class="pt-2">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-2.5 rounded-full transition-all">
+                            <i class="fa-brands fa-instagram text-brandRed text-base"></i> Retrouvez @SDa.Design sur Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Logo SDa Design Officiel -->
+                <div class="flex-shrink-0 bg-white p-6 rounded-2xl border border-white/20 shadow-lg">
+                    <img src="SDa Design LOGO.png" alt="SDa Design Logo" class="h-28 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/240x100/ffffff/0A1A3A?text=SDa+Design'">
+                </div>
+            </div>
+
+            <!-- Portfolio Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-10 text-xs">
+                <button class="filter-btn active bg-brandRed text-white font-bold px-5 py-2.5 rounded-full transition-all shadow-md" data-filter="all">Toutes les créations</button>
+                <button class="filter-btn bg-cardBg hover:bg-white/10 text-textMuted px-5 py-2.5 rounded-full border border-white/10 transition-all" data-filter="matchday">Affiches de Match</button>
+                <button class="filter-btn bg-cardBg hover:bg-white/10 text-textMuted px-5 py-2.5 rounded-full border border-white/10 transition-all" data-filter="recruitment">Annonces Recrutement</button>
+                <button class="filter-btn bg-cardBg hover:bg-white/10 text-textMuted px-5 py-2.5 rounded-full border border-white/10 transition-all" data-filter="branding">Branding Athlète</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden bg-cardBg border border-white/10 cursor-pointer" data-category="matchday" onclick="openModal('Matchday Graphic Volley-ball', 'Affiche officielle de match de volley-ball haute définition réalisée pour la promotion sur les réseaux sociaux.', 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80" alt="Gameday Volley" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-[10px] uppercase text-brandRed font-bold tracking-wider">SDa Design — Matchday</span>
+                        <h4 class="font-display text-2xl font-bold uppercase text-white">Matchday Championship Poster</h4>
+                        <p class="text-xs text-textMuted">Visuel dynamique pour club de Volley</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden bg-cardBg border border-white/10 cursor-pointer" data-category="recruitment" onclick="openModal('Official Commitment Graphic', 'Visuel d’annonce de recrutement universitaire US pour un athlète signé en NCAA.', 'https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=800&q=80" alt="Commitment Graphic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-[10px] uppercase text-brandRed font-bold tracking-wider">SDa Design — Recrutement</span>
+                        <h4 class="font-display text-2xl font-bold uppercase text-white">US College Commitment Post</h4>
+                        <p class="text-xs text-textMuted">Annonce de signature de bourse</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden bg-cardBg border border-white/10 cursor-pointer" data-category="branding" onclick="openModal('Personal Athlete Logo & Identity', 'Création d’un logo personnel et d’un kit de visuels Instagram pour un joueur pro.', 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80" alt="Athlete Branding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-[10px] uppercase text-brandRed font-bold tracking-wider">SDa Design — Branding</span>
+                        <h4 class="font-display text-2xl font-bold uppercase text-white">Athlete Identity Pack</h4>
+                        <p class="text-xs text-textMuted">Identité visuelle sur-mesure</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden bg-cardBg border border-white/10 cursor-pointer" data-category="matchday" onclick="openModal('Game Day Starting Lineup', 'Visuel de présentation de la composition de l’équipe avant le match.', 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" alt="Lineup Graphic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-[10px] uppercase text-brandRed font-bold tracking-wider">SDa Design — Matchday</span>
+                        <h4 class="font-display text-2xl font-bold uppercase text-white">Starting 6 Lineup Template</h4>
+                        <p class="text-xs text-textMuted">Composition d’équipe réseaux sociaux</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden bg-cardBg border border-white/10 cursor-pointer" data-category="recruitment" onclick="openModal('Player Scouting Card', 'Fiche profil joueur interactive pour la promotion auprès des coachs universitaires.', 'https://images.unsplash.com/photo-1517649763962-0c6232661a0b?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c6232661a0b?auto=format&fit=crop&w=800&q=80" alt="Scouting Card" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-[10px] uppercase text-brandRed font-bold tracking-wider">SDa Design — Recrutement</span>
+                        <h4 class="font-display text-2xl font-bold uppercase text-white">Athlete Scouting Card</h4>
+                        <p class="text-xs text-textMuted">Carte statistiques & highlights</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden bg-cardBg border border-white/10 cursor-pointer" data-category="branding" onclick="openModal('Social Media Sport Kit', 'Pack de templates Instagram stories et posts déclinables pour un club.', 'https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=800&q=80" alt="Social Media Sport" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-[10px] uppercase text-brandRed font-bold tracking-wider">SDa Design — Branding</span>
+                        <h4 class="font-display text-2xl font-bold uppercase text-white">Social Media Sport Pack</h4>
+                        <p class="text-xs text-textMuted">Kit graphique complet de saison</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Formulaire de Contact & Devis -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <span class="text-brandRed font-bold text-xs uppercase tracking-widest block mb-2">Prendre Contact</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-extrabold uppercase">Lancez Votre <span class="text-brandRed">Projet</span></h2>
+                <p class="text-textMuted text-sm mt-2">Athlète à la recherche d'opportunités ou club souhaitant des visuels professionnels ? Remplissez ce formulaire.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-cardBg p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-textMuted mb-2">Nom & Prénom</label>
+                            <input type="text" required placeholder="Ex: Marie Dupont" class="w-full bg-brandNavyDark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition-colors text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-textMuted mb-2">Adresse Email</label>
+                            <input type="email" required placeholder="Ex: marie@example.com" class="w-full bg-brandNavyDark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition-colors text-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-textMuted mb-2">Service Souhaité</label>
+                            <select required class="w-full bg-brandNavyDark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition-colors text-white">
+                                <option value="scouting_us">SDa Consulting — Scouting & Bourses USA (Sportlinx360)</option>
+                                <option value="scouting_pro">SDa Consulting — Carrière Pro (AlfaGlobe)</option>
+                                <option value="design">SDa Design — Visuels Sportifs & Graphisme</option>
+                                <option value="both">Offre Combinée (Consulting + SDa Design)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-textMuted mb-2">Discipline / Sport</label>
+                            <input type="text" placeholder="Ex: Volley-ball, Basket, etc." class="w-full bg-brandNavyDark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition-colors text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-textMuted mb-2">Votre Message / Précisions</label>
+                        <textarea rows="4" required placeholder="Décrivez votre profil sportif ou vos besoins en création graphique..." class="w-full bg-brandNavyDark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brandRed transition-colors text-white resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl font-bold uppercase tracking-wider text-white bg-brandRed hover:bg-brandRedHover transition-colors glow-red">
+                        Envoyer le message
+                    </button>
+                </form>
+
+                <div id="form-feedback" class="hidden mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500 text-green-400 text-xs text-center">
+                    <i class="fa-solid fa-circle-check mr-2"></i> Votre message a bien été envoyé ! Nous vous répondrons dans les plus brefs délais.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Portfolio -->
+    <div id="portfolio-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="bg-cardBg border border-white/10 rounded-3xl max-w-2xl w-full p-6 relative overflow-hidden">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="modal-img" src="" alt="Aperçu SDa Design" class="w-full h-72 object-cover rounded-2xl mb-6">
+            <span class="text-[10px] uppercase font-bold text-brandRed tracking-widest block mb-1">SDa Design — Création Sportive</span>
+            <h3 id="modal-title" class="font-display text-3xl font-bold uppercase text-white mb-2"></h3>
+            <p id="modal-desc" class="text-textMuted text-sm leading-relaxed"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-brandNavyDark border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Logos Footer -->
+                <div class="flex items-center gap-4">
+                    <img src="SDa Consulting Logo.png" alt="SDa Consulting" class="h-8 w-auto bg-white p-1 rounded" onerror="this.onerror=null; this.src='https://placehold.co/120x40/0A1A3A/ffffff?text=SDa'">
+                    <span class="text-gray-600">|</span>
+                    <img src="SDa Design LOGO.png" alt="SDa Design" class="h-6 w-auto bg-white p-1 rounded" onerror="this.onerror=null; this.src='https://placehold.co/100x30/ffffff/0A1A3A?text=Design'">
+                </div>
+
+                <!-- Réseaux -->
+                <div class="flex items-center gap-6 text-lg">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-textMuted hover:text-brandRed transition-colors" title="Instagram SDa Design">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-textMuted hover:text-white transition-colors" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:contact@sda-consulting.com" class="text-textMuted hover:text-white transition-colors" title="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+
+                <div class="text-xs text-textMuted text-center md:text-right">
+                    © 2026 SDa Consulting & SDa Design. Partenaires Sportlinx360 & AlfaGlobe.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script>
+        // Toggle Menu Mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Filtrage de la Galerie SDa Design
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brandRed', 'text-white', 'font-bold', 'shadow-md');
+                    b.classList.add('bg-cardBg', 'text-textMuted');
+                });
+                btn.classList.add('active', 'bg-brandRed', 'text-white', 'font-bold', 'shadow-md');
+                btn.classList.remove('bg-cardBg', 'text-textMuted');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modale Portfolio
+        const modal = document.getElementById('portfolio-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+
+        function openModal(title, desc, imgSrc) {
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+            modalImg.src = imgSrc;
+            modal.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('modal-active');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Soumission du formulaire
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            feedback.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
